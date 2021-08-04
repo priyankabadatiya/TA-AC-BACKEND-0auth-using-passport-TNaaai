@@ -18,13 +18,13 @@ router.get('/failed', (req, res) => {
 
 router.get('/auth/github', passport.authenticate('github'));
 
-router.get('/auth/github/callback', passport.authenticate('github', {failedRedirect: '/failed'}), (req, res) => {
+router.get('/auth/github/callback', passport.authenticate('github', {failedRedirect: '/failed',session:false }), (req, res) => {
   res.redirect('/success');
 });
 
 router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
-router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/failure'}), (req, res) => {
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/failed', session:false}), (req, res) => {
   res.redirect('/success');
 })
 

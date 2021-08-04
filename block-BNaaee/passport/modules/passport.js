@@ -8,6 +8,7 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/github/callback"
 }, (accessToken, refreshToken, profile, done) => {
+    console.log(profile)
     var email = profile._json.email;
 
     var githubData = {
